@@ -24,7 +24,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
   async function getMovieDetail()
   {
-    const url = `http://www.omdbapi.com/?i=${params.id}&plot=full&apikey=${API_KEY}`;
+    const url = `https://www.omdbapi.com/?i=${params.id}&plot=full&apikey=${API_KEY}`;
 
     try {
       const response = await fetch(url);

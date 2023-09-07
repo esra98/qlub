@@ -13,7 +13,7 @@ const ratingImages: Record<string, string> = {
     "Internet Movie Database": "/imdb-icon.png",
     "Metacritic": "/metacritic-icon.png",
     "Rotten Tomatoes": "/rotten-tomatoes.png",
-  };
+};
 
 const DetailRatings: React.FC<RatingsListProps> = ({ ratings }) => {
     return (

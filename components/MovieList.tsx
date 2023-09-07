@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '@/app/Context/GlobalContext';
 import MovieCard from './MovieCard';
-import Grid from '@mui/material/Grid';
+import {Grid, Button} from '@mui/material';
 import { styled } from '@mui/system';
-import Button from '@mui/material/Button';
 import ToggleArea from './YearFilterArea';
 import NoResultsFound from './NoResultSection'; 
+import LoadingSpinner from "@/components/Loading";
 
 const MovieListComponent = styled('div')({
   padding: '32px', // Your styles here
@@ -26,6 +26,7 @@ const CustomLoadButton = styled(Button)(({ theme }) => ({
 function MovieList() {
   const { searched, yearRange , searchYear} = useGlobalContext();
   const [movies, setMovies] = useState<any[]>([]);
+  const [loading, setLoadindg] = useState<any>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [filteredMovies, setFilteredMovies] = useState<any[]>([]);
@@ -48,7 +49,7 @@ function MovieList() {
 
   const getMovieRequest = async () => {
     const url = `https://www.omdbapi.com/?s=${searched}&page=${currentPage}&apikey=${API_KEY}`;
-
+    setLoadindg(true)
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -63,11 +64,12 @@ function MovieList() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+    setLoadindg(false)
   };
 
   const getMovieByYear = async () => {
     const url = `https://www.omdbapi.com/?t=${searched}&y=${searchYear}&apikey=${API_KEY}`;
-
+    setLoadindg(true)
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -83,6 +85,7 @@ function MovieList() {
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+    setLoadindg(false)
   };
 
   useEffect(() => {
@@ -106,6 +109,13 @@ function MovieList() {
     // Increment the current page to load the next page of results
     setCurrentPage(currentPage + 1);
   };
+
+  if(loading)
+  {
+    return(
+      <LoadingSpinner />
+    )
+  }
 
   return (
     <MovieListComponent>

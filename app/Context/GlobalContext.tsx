@@ -4,7 +4,6 @@
 import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
 import React, { ReactNode } from 'react';
 
-
 interface ContextProps {
     searched: string,
     setSearched: Dispatch<SetStateAction<string>>

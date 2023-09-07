@@ -1,9 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import {Box, Slider, Typography} from '@mui/material';
 import { useGlobalContext } from '@/app/Context/GlobalContext';
 import { styled} from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
 
 function valuetext(value: number) {
     return `${value}°C`;

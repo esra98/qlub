@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, CardContent, CardMedia, CardActionArea, Typography} from '@mui/material';
+import { Card,  CardMedia} from '@mui/material';
 
 interface MainFeaturedPostProps {
     poster: string;

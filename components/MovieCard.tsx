@@ -1,9 +1,7 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import {  } from '@mui/material';
+import {Typography, CardActionArea, Card, CardMedia, CardContent} from '@mui/material';
+
 import Link from 'next/link';
 interface MovieCardProps {
     Title: string;
@@ -11,7 +9,6 @@ interface MovieCardProps {
     imdbID: string;
     Poster: string;
 }
-
 
 export default function MovieCard({ Title, Year, imdbID, Poster }: MovieCardProps) {
   return (

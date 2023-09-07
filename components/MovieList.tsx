@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/system';
 import Button from '@mui/material/Button';
 import ToggleArea from './YearFilterArea';
-import NoResultsFound from './NoResultSection';
+import NoResultsFound from './NoResultSection'; 
 
 const MovieListComponent = styled('div')({
   padding: '32px', // Your styles here

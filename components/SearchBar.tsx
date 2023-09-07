@@ -1,6 +1,5 @@
 "use client"
-
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,10 +9,10 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { useGlobalContext } from '@/app/Context/GlobalContext';
-import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/navigation';
+import { useGlobalContext } from '@/app/Context/GlobalContext';
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -37,14 +36,12 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -66,19 +63,24 @@ const CustomSearchButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
-  const {searched, setSearched, setSearchYear} = useGlobalContext();  
+  const { searched, setSearched, setSearchYear } = useGlobalContext();  
   const router = useRouter();
-  const [currentSearch,setCurrentSearch]  = useState<any>();
+  const [currentSearch, setCurrentSearch] = useState('');
 
-  useEffect(()=>{
-    setCurrentSearch(searched)
-  },[])
+  useEffect(() => {
+    setCurrentSearch(searched);
+  }, [searched]);
 
-  function searchClc()
-  {
-    setSearched(currentSearch)
-    setSearchYear('')
+  function searchClc() {
+    setSearched(currentSearch);
+    setSearchYear('');
     router.push('/');
+  }
+
+  function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      searchClc();
+    }
   }
 
   return (
@@ -102,9 +104,10 @@ export default function SearchAppBar() {
               inputProps={{ 'aria-label': 'search' }}
               value={currentSearch}
               onChange={ev => setCurrentSearch(ev.target.value)}
+              onKeyPress={handleKeyPress} // Call searchClc when Enter key is pressed
             />
           </Search>
-          <CustomSearchButton onClick={searchClc} variant="contained">GO! </CustomSearchButton>
+          <CustomSearchButton onClick={searchClc} variant="contained">GO!</CustomSearchButton>
         </Toolbar>
       </AppBar>
     </Box>

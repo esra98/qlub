@@ -34,7 +34,7 @@ function YearSlider() {
             You can use the slider below to filter the listed movies.
         </Typography>
         <CustomSlider
-            getAriaLabel={() => 'Temperature range'}
+            getAriaLabel={() => 'year range'}
             value={value}
             onChange={handleChange}
             valueLabelDisplay="on"

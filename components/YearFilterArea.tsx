@@ -38,7 +38,7 @@ export default function ToggleArea() {
               name="toggleArea"
             />
           }
-          label="Show Year Filter"
+          label="Year Filter"
         />
   
         {isAreaVisible && (

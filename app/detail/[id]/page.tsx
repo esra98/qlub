@@ -13,7 +13,7 @@ import DetailsSidebar from "@/components/DetailSidebar";
 
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [movie, setMovie] = useState<object>();
+  const [movie, setMovie] = useState<any>();
   const API_KEY = '2653c93f';
   useEffect(()=>{
     if(params.id)

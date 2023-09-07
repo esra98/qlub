@@ -5,6 +5,7 @@ import {AppBar, Box, Toolbar,  Typography, InputBase, Button } from '@mui/materi
 import SearchIcon from '@mui/icons-material/Search';
 import { useRouter } from 'next/navigation';
 import { useGlobalContext } from '@/app/Context/GlobalContext';
+import Link from 'next/link';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -86,7 +87,9 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Movie DB
+            <Link href="/">
+              Movie DB
+            </Link>
           </Typography>
           <Search>
             <SearchIconWrapper>

@@ -47,7 +47,7 @@ function MovieList() {
   }, [movies, yearRange]);
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?s=${searched}&page=${currentPage}&apikey=${API_KEY}`;
+    const url = `https://www.omdbapi.com/?s=${searched}&page=${currentPage}&apikey=${API_KEY}`;
 
     try {
       const response = await fetch(url);
@@ -66,7 +66,7 @@ function MovieList() {
   };
 
   const getMovieByYear = async () => {
-    const url = `http://www.omdbapi.com/?t=${searched}&y=${searchYear}&apikey=${API_KEY}`;
+    const url = `https://www.omdbapi.com/?t=${searched}&y=${searchYear}&apikey=${API_KEY}`;
 
     try {
       const response = await fetch(url);

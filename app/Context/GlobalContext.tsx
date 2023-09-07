@@ -2,6 +2,7 @@
 'use client';
 
 import { createContext, useContext, Dispatch, SetStateAction, useState } from "react";
+import React, { ReactNode } from 'react';
 
 
 interface ContextProps {
@@ -22,7 +23,11 @@ const GlobalContext = createContext<ContextProps>({
     setSearchYear: (): string => '',
 })
 
-export const GlobalContextProvider = ({ children }) => {
+interface GlobalContextProviderProps {
+    children: ReactNode;
+  }
+
+export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({ children }) => {
     const [searched, setSearched] = useState('Inception');
     const [yearRange, setYearRange] = useState<number[]>([1900,2023]);
     const [searchYear, setSearchYear] = useState('');

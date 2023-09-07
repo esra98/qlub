@@ -86,9 +86,12 @@ function MovieList() {
   };
 
   useEffect(() => {
-    setMovies([])
     getMovieRequest();
   }, [currentPage, searched]);
+
+  useEffect(() => {
+    setMovies([])
+  }, [searched]);
 
   useEffect(() => {
     if(searchYear!=="")
